@@ -2,7 +2,7 @@ package com.jaime.calculator;
 import org.springframework.stereotype.Service;
 
 /**
- * Lógica para la suma
+ * Lógica para la operacion suma
  */
 @Service
 public class Calculator {
