@@ -47,5 +47,11 @@ pipeline {
                 sh "docker push localhost:5000/calculator:latest"
             }
         }
+        stage("Deploy al area staging") {
+            steps {
+                sh "docker run -d --rm -p 8765:8080 --name calculator
+                calculator:latest"
+            }
+        }
     }
 }
