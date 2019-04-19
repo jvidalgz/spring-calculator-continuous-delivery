@@ -52,5 +52,11 @@ pipeline {
                 sh "docker run -d --rm -p 8765:8080 --name calculator calculator:latest"
             }
         }
+        stage("Prueba de aceptacion") {
+            steps {
+                    sleep 60
+                    sh "./acceptance_test.sh"
+                }
+            }
     }
 }
