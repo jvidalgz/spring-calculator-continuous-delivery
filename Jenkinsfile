@@ -49,7 +49,7 @@ pipeline {
         }
         stage("Deploy al area staging") {
             steps {
-                sh "docker run -d --rm -p 8765:8080 --name calculator calculator:latest"
+                sh "docker run -d --rm --name calculator --network jenkins calculator:latest"
             }
         }
         stage("Prueba de aceptacion") {
