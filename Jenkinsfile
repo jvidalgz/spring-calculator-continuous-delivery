@@ -58,5 +58,10 @@ pipeline {
                     sh "./acceptance_test.sh"
                 }
             }
+        post {
+            always {
+                sh "docker stop calculator"
+            }
+        }
     }
 }
