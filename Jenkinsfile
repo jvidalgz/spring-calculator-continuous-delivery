@@ -54,14 +54,14 @@ pipeline {
         }
         stage("Prueba de aceptacion") {
             steps {
-                    sleep 60
-                    sh "./acceptance_test.sh"
+                sleep 60
+                sh "./acceptance_test.sh"
+            }
+            post {
+                always {
+                    sh "docker stop calculator"
                 }
             }
-        post {
-            always {
-                sh "docker stop calculator"
-            }
-        }
+        }        
     }
 }
