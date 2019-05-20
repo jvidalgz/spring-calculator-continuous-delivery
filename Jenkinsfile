@@ -59,10 +59,7 @@ pipeline {
             }
             post {
                 always {
-                    sh "docker-compose stop redis"
-                    sh "docker-compose stop calculator"
-                    sh "docker-compose rm --force redis"
-                    sh "docker-compose rm --force calculator"
+                    sh "docker-compose down"
                 }
             }
         }        
