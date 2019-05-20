@@ -49,17 +49,20 @@ pipeline {
         }
         stage("Deploy al area staging") {
             steps {
-                sh "docker run -d --rm --name calculator --network jenkins calculator:latest"
+                sh "docker-compose up -d"
             }
         }
         stage("Prueba de aceptacion") {
             steps {
-                sleep 60
+                sleep 10
                 sh "./acceptance_test.sh"
             }
             post {
                 always {
-                    sh "docker stop calculator"
+                    sh "docker-compose stop redis"
+                    sh "docker-compose stop calculator"
+                    sh "docker-compose rm --force redis"
+                    sh "docker-compose rm --force calculator"
                 }
             }
         }        
